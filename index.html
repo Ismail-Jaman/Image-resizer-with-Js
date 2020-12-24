@@ -13,6 +13,7 @@
     Step 1: Select Your Size To Show Your Image,<br>
     Step 2: Select Your Favourite Color For Backgorund And Text,<br>
     Step 3: You Can Also Add Some Text On Your Image. <br>
+    Step 4 : The Download Link Will Be Generated And Also It Will BE Copied To Your Clipboard.
 
    </h4>   
 Image Size:
@@ -27,10 +28,15 @@ Choose Background Color
 <input type="color" name=" " class = "allinputs" id="bckColor" value="#dddddd"> <br>  <br>Color Text Color
 <input type="color" class = "allinputs"  id="textColor" value="#ff0000"> <br> <br>
 <img src="" alt=""><br>
+<textarea  name='' id="" cols="50" rows="5" > </textarea> <br> <br>
+<a href="https://ismail-jaman.github.io/Image-resizer-with-Js/" target="_self"> <button>Clear All</button> </a>
+
 <script>
 const imgResize = document.querySelector('select');
 const allNputs = document.querySelectorAll('input');
 const imgs = document.querySelector('img');
+const textArea = document.querySelector('textarea');
+const clrBtn = document.querySelector('button');
 
 // console.log(allNputs);
 imgResize.addEventListener('change',build);
@@ -38,6 +44,9 @@ imgResize.addEventListener('change',build);
     // console.log(item);
     item.addEventListener("change", build)
 });
+function space(str) {
+    return str.split(" ").join("+");
+}
  function clean(str) {
      return str.replace("#","");
  };
@@ -45,7 +54,7 @@ function build(e) {
     let i ={};
     i.size = imgResize.value;
     // console.log(i.size )
-    i.text = allNputs[0].value;
+    i.text = space(allNputs[0].value);
     // console.log(i.text)
     i.bgClr = clean(allNputs[1].value);
     // console.log( i.bgClr)
@@ -54,6 +63,10 @@ function build(e) {
     i.path = "http://via.placeholder.com/"+i.size+"/"+i.bgClr+"/"+i.textClr+"?text="+i.text;
     // console.log(i.path)
     imgs.src = i.path;
+    textArea.value = i.path;
+    textArea.select();
+    textArea.focus();
+    document.execCommand("copy");
     console.log(i);
 }
 
