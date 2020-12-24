@@ -2,4 +2,4 @@
 
             *Assalamualaikum*
         {} HERE IS THE LIVE LINK {}
-https://ismail-jaman.github.io/Image-resizer-with-Js/
+https://ismail-jaman.github.io/Image-resizer-with-Js/index.html
